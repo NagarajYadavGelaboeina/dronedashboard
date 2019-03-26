@@ -27,7 +27,6 @@ const avatarStyles = theme => ({
   }
 });
 const Avatar = withStyles(avatarStyles)(AvatarRaw);
-
 const styles = {
   card: {
     margin: "5% 25%"
