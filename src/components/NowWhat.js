@@ -35,27 +35,35 @@ const styles = {
 };
 
 const NowWhat = props => {
-  const { classes } = props;
+  const { classes, tempData } = props;
+  const value="315";
+  const value1='';
+  const value2='';
+  const value3='';
   return (
     <Card className={classes.card}>
-      <CardHeader title="OK, NagarjYadav, you're all setup. Now What?" />
+      <CardHeader title="Here come dashboard...!!" />
       <CardContent>
         <List>
           <ListItem>
             <Avatar>1</Avatar>
-            <ListItemText primary="Connect to the Drone API" />
+            <ListItemText primary="Temperature:" ></ListItemText>
+            <ListItemText primary={tempData ? tempData.temperature : ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>2</Avatar>
-            <ListItemText primary="Create your Visualization" />
+            <ListItemText primary="Latitude:" />
+            <ListItemText primary={tempData ? tempData.latitude : ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>3</Avatar>
-            <ListItemText primary="Poll the API" />
+            <ListItemText primary="Longitude:" />
+            <ListItemText primary={tempData ? tempData.longitude: ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>4</Avatar>
-            <ListItemText primary="Submit Your App" />
+            <ListItemText primary="Last Received:" />
+            <ListItemText primary={tempData ? tempData.lastReceived: ''} ></ListItemText>
           </ListItem>
         </List>
       </CardContent>
