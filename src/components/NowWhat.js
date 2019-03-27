@@ -1,5 +1,4 @@
 import React from "react";
-import * as Constants from './constants';
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,6 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
 import AvatarRaw from "@material-ui/core/Avatar";
+
+import * as Constants from './constants';
 
 const cardStyles = theme => ({
   root: {
