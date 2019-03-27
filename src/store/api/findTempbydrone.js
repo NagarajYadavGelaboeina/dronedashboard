@@ -4,7 +4,7 @@ const findTempbydrone = async () => {
  // const latlon = [latitude, longitude].join(",");
   // Using the create-react-app's proxy for CORS issues
   const response = await fetch(
-    `https://react-assessment-api.herokuapp.com/api//drone`
+    `https://react-assessment-api.herokuapp.com/api/drone`
   );
   if (!response.ok) {
     return { error: { code: response.status } };

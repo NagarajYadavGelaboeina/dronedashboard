@@ -1,7 +1,6 @@
 import * as actions from "../actions";
 
 const initialState = {
-    tempLoading : false,
     tempData: {
         temperature: '',
         latitude: '',
@@ -10,23 +9,15 @@ const initialState = {
     }
 };
 
-const startLoading = (state, action) => {
-  return { ...state, tempLoading: true };
-};
-
 const tempDataReceived = (state, action) => {
-  const { data } = action;
-  if (!data["consolidated_weather"]) return state;
-  const temperature = data.temperature;
-return {
+  const { tempData } = action;
+  return {
     ...state,
-    tempLoading: false,
-    temperature
+    tempData
   };
 };
 
 const handlers = {
-  [actions.FETCH_TEMP_DATA]: startLoading,
   [actions.TEMP_DATA_RECEIVED]: tempDataReceived
 };
 

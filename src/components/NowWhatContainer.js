@@ -1,41 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as Constants from './constants';
 import * as actions from "../store/actions";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import NowWhat from "./NowWhat";
 
 class NowWhatContainer extends Component {
   componentDidMount() {
-    this.props.onLoad();
+    const that = this;
+    setInterval(function(){
+      that.props.onLoad()
+    },Constants.FETCH_INTERVAL*1000);
   }
 
   render() {
-    const {
-        tempLoading,
-        tempData
-      } = this.props;
-      if (tempLoading) return <LinearProgress />;
+    const { tempData } = this.props;
       return (
           <NowWhat tempData={tempData} />
       )
   }
 }
 
-const mapState = (state, ownProps) => {
-  const {
-    tempLoading,
-    tempData
-  } = state.tempData;
-  return {
-    tempLoading,
-    tempData
-  };
+const mapState = (state) => {
+  const { tempData } = state.temperature;
+  return { tempData };
 };
 
 const mapDispatch = dispatch => ({
   onLoad: () =>
     dispatch({
-      type: actions.FETCH_TEMP_DATA
+      type: actions.TEMP_DATA_FETCH
     })
 });
 

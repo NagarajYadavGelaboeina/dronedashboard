@@ -1,4 +1,5 @@
 import React from "react";
+import * as Constants from './constants';
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -35,10 +36,7 @@ const styles = {
 
 const NowWhat = props => {
   const { classes, tempData } = props;
-  const value="315";
-  const value1='';
-  const value2='';
-  const value3='';
+  const { metric, latitude, longitude, timestamp } = tempData;
   return (
     <Card className={classes.card}>
       <CardHeader title="Here come dashboard...!!" />
@@ -47,22 +45,22 @@ const NowWhat = props => {
           <ListItem>
             <Avatar>1</Avatar>
             <ListItemText primary="Temperature:" ></ListItemText>
-            <ListItemText primary={tempData ? tempData.temperature : ''} ></ListItemText>
+            <ListItemText primary={tempData ? metric : ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>2</Avatar>
             <ListItemText primary="Latitude:" />
-            <ListItemText primary={tempData ? tempData.latitude : ''} ></ListItemText>
+            <ListItemText primary={tempData ? latitude : ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>3</Avatar>
             <ListItemText primary="Longitude:" />
-            <ListItemText primary={tempData ? tempData.longitude: ''} ></ListItemText>
+            <ListItemText primary={tempData ? longitude: ''} ></ListItemText>
           </ListItem>
           <ListItem>
             <Avatar>4</Avatar>
             <ListItemText primary="Last Received:" />
-            <ListItemText primary={tempData ? tempData.lastReceived: ''} ></ListItemText>
+            <ListItemText primary={`${timestamp ? Constants.FETCH_INTERVAL : ''} seconds ago`}></ListItemText>
           </ListItem>
         </List>
       </CardContent>

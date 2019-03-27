@@ -3,7 +3,6 @@ import API from "../api";
 import * as actions from "../actions";
 
 function* watchTempData(action) {
-  const { latitude, longitude } = action;
   const { error, data } = yield call(
     API.findTempbydrone,
   );
@@ -13,7 +12,7 @@ function* watchTempData(action) {
     yield cancel();
     return;
   }
-  const tempData = data[0] ? data[0].tempData : ''
+  const tempData = data ? data.data[0] : ''
   if (!tempData) {
     yield put({ type: actions.API_ERROR });
     yield cancel();
@@ -24,7 +23,7 @@ function* watchTempData(action) {
 
 function* watchAppLoad() {
   yield all([
-    takeEvery(actions.FETCH_TEMP_DATA, watchTempData)
+    takeEvery(actions.TEMP_DATA_FETCH, watchTempData)
   ]);
 }
 
