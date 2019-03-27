@@ -60,7 +60,7 @@ const NowWhat = props => {
           <ListItem>
             <Avatar>4</Avatar>
             <ListItemText primary="Last Received:" />
-            <ListItemText primary={`${timestamp ? Constants.FETCH_INTERVAL : ''} seconds ago`}></ListItemText>
+            <ListItemText primary={ timestamp ? `${Constants.FETCH_INTERVAL} seconds ago` : ''}></ListItemText>
           </ListItem>
         </List>
       </CardContent>
